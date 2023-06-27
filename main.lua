@@ -23,11 +23,16 @@ Wind.Name = "Wind"
 Wind.Parent = game.CoreGui
 --Frame
 local Frame = Instance.new("Frame")
+local f_ui = Instance.new("UICorner")
+f_ui.Name = "UICorner_frame"
+f_ui.Parent = Frame
+f_ui.CornerRadius = UDim.new(0,32)
 Frame.Name = "Frame"
 Frame.Parent = Wind
 Frame.Size = UDim2.new(0, 595, 0, 516)
 Frame.Visible = false
-Frame.Position = UDim2.new(0.35, 0, 0.35, 0)
+Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
+Frame.AnchorPoint = Vector2.new(0.5, 0.5)
 Frame.BackgroundColor3 = Color3.fromRGB(77, 62, 82)
 Frame.BorderSizePixel = 0
 --Open/Close Button
