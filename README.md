@@ -1,4 +1,3 @@
-WARNING
-THIS CODE IS REALLY REALLY BAD
-IF YOU TRY THIS ON ROBLOX
-YOU WILL GET BANNED
+Warning:
+This code is detectebale by most AC-s
+Use this at your own risk!
