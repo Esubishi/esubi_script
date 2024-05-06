@@ -2,6 +2,8 @@
 local userInputService = game:WaitForChild("UserInputService")
 local player = game.Players.LocalPlayer
 local OpenFrame = false
+--Functions
+local function run(func) func() end
 --BaseGUI
 local CoreGUI = Instance.new("ScreenGui")
 CoreGUI.Parent = game.CoreGui
@@ -16,16 +18,18 @@ B_Frame.Visible = false
 B_Frame.Name = "BaseFrame"
 B_Frame.Size = UDim2.new(0.3,0,0.7,0)
 B_Frame.BackgroundColor3 = Color3.fromRGB(24,193,255)
---Functions
-local function openFrame(input, _gameProcessed)
-	if input.KeyCode == Enum.KeyCode.P then
-		if OpenFrame == false then
-			OpenFrame = true
-			B_Frame.Visible = true
-		elseif OpenFrame == true then
-			OpenFrame = false
-			B_Frame.Visible = false
+B_Frame.Draggable = true
+
+userInputService.InputBegan:Connect(function(input, _gameProcessed)
+	if _gameProcessed then
+		if input.KeyCode == Enum.KeyCode.P then
+			if OpenFrame == false then
+				OpenFrame = true
+				B_Frame.Visible = true
+			elseif OpenFrame == true then
+				OpenFrame = false
+				B_Frame.Visible = false
+			end
 		end
 	end
-end
-userInputService.InputBegan:Connect(openFrame)
+end)
