@@ -18,24 +18,26 @@ MainFrame.Visible = true
 
 --Functions
 
-local function setSize(scalex,offsetx,scaley,offsety)
+local function setSize2D(scalex,offsetx,scaley,offsety)
 	return UDim2.new(scalex,offsetx,scaley,offsety)
+end
+
+local function setSize1D(scale, offset)
+  return UDim.new(scale,offset)
 end
 
 local function CreateButton(conf)
 	--First hand Error checking
 	if not conf.Parent then
-		print("Button: '"..conf.Name.."' needs a parent")
+		print("Error: Button '"..conf.Name.."' needs a parent")
 		return -1
 	end
 	
 	if conf.Type ~= "TextLabel" and conf.Type ~= "TextButton" then
 		print("Error: '"..conf.Type.."' is not a valid button type")
 		return -1
-	end	
-
-	
-	
+	end
+  --Button Creation
 	local button = Instance.new(conf.Type)
 	button.Parent = conf.Parent	
 	button.TextScaled = true
@@ -45,7 +47,7 @@ local function CreateButton(conf)
 	--Second hand error checking
 	
 	if not conf.Size then
-		button.Size = setSize(1,0,1,0)
+		button.Size = setSize2D(1,0,1,0)
 	else
 		button.Size = conf.Size
 	end
@@ -66,7 +68,14 @@ local function CreateButton(conf)
 	else
 		button.MouseButton1Click:Connect(conf.Func)
 	end
-	
+
+  if not conf.Rounded then
+  else
+    local cornerui = Instance.new("UICorner")
+    cornerui.CornerRadius = conf.Rounded
+    cornerui.Parent = button
+  end
+
 	return button
 end
 
@@ -76,10 +85,11 @@ local Walkspeed_button = CreateButton({
 	Name = "Walkspeed",
 	Text = "Walkspeed",
 	Type = TB,
-	Parent = MainFrame,
+        Rounded = setSize1D(0.2, 2),
+	Parent = MainFramei,
 	isClicked = false,
 	Draggable = true,
-	Size = setSize(0.13,0,0.30,0),
+	Size = setSize2D(0.13,0,0.30,0),
 	
 	Func = function ()
 		if isClicked == false then
