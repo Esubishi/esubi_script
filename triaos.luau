@@ -1,4 +1,6 @@
-local asteriosbutton = CreateButton({
+local GUI = require("esubi_gui.luau")
+
+local asteriosbutton = gui.CreateButton({
 	Text = "AutoComplete Asterios",
 	Name = "Asterios",
 	Type = TB,
@@ -22,7 +24,7 @@ local asteriosbutton = CreateButton({
 	end
 })
 
-local decompile = CreateButton({
+local decompile = gui.CreateButton({
 	Text = "Decompile",
 	Name = Text,
 	Type = TB,
